@@ -1,0 +1,20 @@
+{
+  "config": "xgb_weighted",
+  "model": "xgb_weighted_nlp",
+  "n_features": 97,
+  "notes": "weighted XGB with NLP embeddings",
+  "seed": 42,
+  "timestamp": "20260414_105146"
+}
+
+              precision    recall  f1-score   support
+
+           0       0.48      0.12      0.20       178
+           1       0.42      0.53      0.47      1706
+           2       0.70      0.58      0.64      5895
+           3       0.55      0.66      0.60      3358
+           4       0.28      0.27      0.27       488
+
+    accuracy                           0.58     11625
+   macro avg       0.49      0.43      0.44     11625
+weighted avg       0.60      0.58      0.58     11625
