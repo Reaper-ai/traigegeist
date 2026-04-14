@@ -1,0 +1,11 @@
+track,predicted_class,count,pct_of_predictions
+chief_complaint,1,101,0.17376643039020026
+chief_complaint,2,3382,5.818594728511458
+chief_complaint,3,37063,63.76539811437616
+chief_complaint,4,17462,30.04266740072947
+chief_complaint,5,116,0.19957332599270525
+injury_cause,1,0,0.0
+injury_cause,2,191,0.3286078040052302
+injury_cause,3,52357,90.07810887069024
+injury_cause,4,5576,9.593283325304522
+injury_cause,5,0,0.0
