@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "config": "xgb_weighted",
+    "model": "xgb_weighted_tabular_holdout",
+    "n_features": 75,
+    "notes": "weighted XGB tabular holdout",
+    "qwk": 1.0,
+    "seed": 42,
+    "timestamp": "20260415_232324"
+  },
+  "report": {
+    "0": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 169.0
+    },
+    "1": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 1719.0
+    },
+    "2": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 5914.0
+    },
+    "3": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 3343.0
+    },
+    "4": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 480.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 11625.0
+    },
+    "weighted avg": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 11625.0
+    }
+  }
+}
