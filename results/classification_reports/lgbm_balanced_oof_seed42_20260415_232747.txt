@@ -1,0 +1,21 @@
+{
+  "config": "lgbm_balanced",
+  "model": "lgbm_balanced_oof",
+  "n_features": 75,
+  "notes": "LightGBM OOF",
+  "qwk": 1.0,
+  "seed": 42,
+  "timestamp": "20260415_232747"
+}
+
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       846
+           1       1.00      1.00      1.00      8597
+           2       1.00      1.00      1.00     29568
+           3       1.00      1.00      1.00     16715
+           4       1.00      1.00      1.00      2398
+
+    accuracy                           1.00     58124
+   macro avg       1.00      1.00      1.00     58124
+weighted avg       1.00      1.00      1.00     58124
