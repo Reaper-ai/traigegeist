@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "config": "stacked_ordinal_logreg_override_calibrated",
+    "model": "stacked_ordinal_logreg_full_clinical_override_v2",
+    "n_features": 10,
+    "notes": "Stacked logreg + CALIBRATED clinical safety overrides (full data). Conservative thresholds. Recommended for submission.",
+    "override_rate_pct": 3.5,
+    "qwk": 0.49856609298321264,
+    "qwk_change_pct": -8.4,
+    "qwk_original": 0.5445750598171636,
+    "seed": 42,
+    "timestamp": "20260417_161009",
+    "upgrades_applied": 2037
+  },
+  "report": {
+    "0": {
+      "f1-score": 0.1745230078563412,
+      "precision": 0.1144223693892568,
+      "recall": 0.367612293144208,
+      "support": 846.0
+    },
+    "1": {
+      "f1-score": 0.40600455453827206,
+      "precision": 0.3380804953560371,
+      "recall": 0.5080842154239851,
+      "support": 8597.0
+    },
+    "2": {
+      "f1-score": 0.5832013932868905,
+      "precision": 0.7029580152671756,
+      "recall": 0.49830898268398266,
+      "support": 29568.0
+    },
+    "3": {
+      "f1-score": 0.5130703931843952,
+      "precision": 0.5259487308368936,
+      "recall": 0.500807657792402,
+      "support": 16715.0
+    },
+    "4": {
+      "f1-score": 0.2594905094905095,
+      "precision": 0.18520499108734403,
+      "recall": 0.4332777314428691,
+      "support": 2398.0
+    },
+    "accuracy": 0.4958881013006675,
+    "macro avg": {
+      "f1-score": 0.3872579716712817,
+      "precision": 0.37332292038734144,
+      "recall": 0.4616181760974893,
+      "support": 58124.0
+    },
+    "weighted avg": {
+      "f1-score": 0.5175210976628273,
+      "precision": 0.568159392730458,
+      "recall": 0.4958881013006675,
+      "support": 58124.0
+    }
+  }
+}

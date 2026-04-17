@@ -1,0 +1,27 @@
+{
+  "config": "lgbm_ordinal_reg",
+  "cutpoints": [
+    0.449224603875399,
+    1.8207339279592087,
+    2.3368831532158714,
+    3.223666895661643
+  ],
+  "model": "lgbm_ordinal_reg_oof",
+  "n_features": 87,
+  "notes": "LGBM regressor OOF + holdout-calibrated cutpoints",
+  "qwk": 0.5283745420559446,
+  "seed": 42,
+  "timestamp": "20260417_155527"
+}
+
+              precision    recall  f1-score   support
+
+           0       0.88      0.08      0.15       846
+           1       0.41      0.58      0.48      8597
+           2       0.68      0.55      0.61     29568
+           3       0.54      0.69      0.61     16715
+           4       0.43      0.13      0.20      2398
+
+    accuracy                           0.57     58124
+   macro avg       0.59      0.41      0.41     58124
+weighted avg       0.59      0.57      0.56     58124

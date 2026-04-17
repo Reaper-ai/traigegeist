@@ -1,0 +1,27 @@
+{
+  "config": "xgb_ordinal_reg",
+  "cutpoints": [
+    0.5055106620392856,
+    1.8164928171173238,
+    2.329169328860865,
+    2.917226553109173
+  ],
+  "model": "xgb_ordinal_reg_holdout",
+  "n_features": 87,
+  "notes": "XGB regressor + tuned ordinal cutpoints",
+  "qwk": 0.5305771410243866,
+  "seed": 42,
+  "timestamp": "20260417_152532"
+}
+
+              precision    recall  f1-score   support
+
+           0       0.82      0.08      0.15       169
+           1       0.42      0.56      0.48      1719
+           2       0.69      0.56      0.62      5914
+           3       0.54      0.63      0.58      3343
+           4       0.24      0.29      0.26       480
+
+    accuracy                           0.56     11625
+   macro avg       0.54      0.42      0.42     11625
+weighted avg       0.59      0.56      0.57     11625
