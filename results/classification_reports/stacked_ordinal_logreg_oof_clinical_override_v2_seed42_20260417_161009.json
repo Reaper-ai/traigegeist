@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "config": "stacked_ordinal_logreg_override_calibrated",
+    "model": "stacked_ordinal_logreg_oof_clinical_override_v2",
+    "n_features": 10,
+    "notes": "Stacked logreg + CALIBRATED clinical safety overrides (OOF). Conservative thresholds: Focus on truly critical patients. ~3.5% override rate.",
+    "override_rate_pct": 3.49,
+    "qwk": 0.49816618292674375,
+    "qwk_change_pct": -8.4,
+    "qwk_original": 0.5439063904970063,
+    "seed": 42,
+    "timestamp": "20260417_161009",
+    "upgrades_applied": 2030
+  },
+  "report": {
+    "0": {
+      "f1-score": 0.1717171717171717,
+      "precision": 0.11258278145695365,
+      "recall": 0.3617021276595745,
+      "support": 846.0
+    },
+    "1": {
+      "f1-score": 0.404313165291922,
+      "precision": 0.33478327228327226,
+      "recall": 0.5102942887053623,
+      "support": 8597.0
+    },
+    "2": {
+      "f1-score": 0.5808266952007292,
+      "precision": 0.7013111302516988,
+      "recall": 0.49567099567099565,
+      "support": 29568.0
+    },
+    "3": {
+      "f1-score": 0.5110262412221264,
+      "precision": 0.5266298482828667,
+      "recall": 0.49632067005683517,
+      "support": 16715.0
+    },
+    "4": {
+      "f1-score": 0.25792023853894896,
+      "precision": 0.18368430366306848,
+      "recall": 0.43286071726438696,
+      "support": 2398.0
+    },
+    "accuracy": 0.4934794577111004,
+    "macro avg": {
+      "f1-score": 0.38516070239417965,
+      "precision": 0.371798267187572,
+      "recall": 0.4593697598714309,
+      "support": 58124.0
+    },
+    "weighted avg": {
+      "f1-score": 0.5153694358101091,
+      "precision": 0.5669402862577638,
+      "recall": 0.4934794577111004,
+      "support": 58124.0
+    }
+  }
+}

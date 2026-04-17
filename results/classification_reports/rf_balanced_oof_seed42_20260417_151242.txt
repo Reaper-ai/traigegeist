@@ -1,0 +1,21 @@
+{
+  "config": "rf_balanced",
+  "model": "rf_balanced_oof",
+  "n_features": 87,
+  "notes": "BalancedRandomForest OOF",
+  "qwk": 0.4728532356223819,
+  "seed": 42,
+  "timestamp": "20260417_151242"
+}
+
+              precision    recall  f1-score   support
+
+           0       0.13      0.36      0.19       846
+           1       0.36      0.59      0.45      8597
+           2       0.73      0.43      0.55     29568
+           3       0.52      0.54      0.53     16715
+           4       0.18      0.52      0.27      2398
+
+    accuracy                           0.49     58124
+   macro avg       0.39      0.49      0.40     58124
+weighted avg       0.59      0.49      0.51     58124

@@ -1,0 +1,21 @@
+{
+  "config": "stacked_ordinal_logreg",
+  "model": "stacked_ordinal_logreg_oof",
+  "n_features": 10,
+  "notes": "Multinomial logreg stacker over XGB/LGBM ordinal OOF probabilities",
+  "qwk": 0.5439063904970063,
+  "seed": 42,
+  "timestamp": "20260417_155720"
+}
+
+              precision    recall  f1-score   support
+
+           0       0.15      0.34      0.21       846
+           1       0.36      0.52      0.43      8597
+           2       0.70      0.51      0.59     29568
+           3       0.52      0.52      0.52     16715
+           4       0.19      0.46      0.27      2398
+
+    accuracy                           0.51     58124
+   macro avg       0.38      0.47      0.40     58124
+weighted avg       0.57      0.51      0.53     58124

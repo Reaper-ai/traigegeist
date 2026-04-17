@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "config": "stacked_ordinal_ridge",
+    "cutpoints": [
+      0.51875,
+      1.5562500000000004,
+      2.40625,
+      3.4124999999999996
+    ],
+    "model": "stacked_ordinal_ridge_oof",
+    "n_features": 2,
+    "notes": "Ridge stacker over XGB/LGBM ordinal OOF predictions",
+    "qwk": 0.5287492501240523,
+    "seed": 42,
+    "timestamp": "20260417_153859"
+  },
+  "report": {
+    "0": {
+      "f1-score": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 846.0
+    },
+    "1": {
+      "f1-score": 0.4825535078867704,
+      "precision": 0.4439992181391712,
+      "recall": 0.5284401535419332,
+      "support": 8597.0
+    },
+    "2": {
+      "f1-score": 0.639997090591701,
+      "precision": 0.6921261700621412,
+      "recall": 0.5951704545454546,
+      "support": 29568.0
+    },
+    "3": {
+      "f1-score": 0.6299481891733238,
+      "precision": 0.5493189708893439,
+      "recall": 0.738318875261741,
+      "support": 16715.0
+    },
+    "4": {
+      "f1-score": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 2398.0
+    },
+    "accuracy": 0.5932489161103847,
+    "macro avg": {
+      "f1-score": 0.35049975753035906,
+      "precision": 0.33708887181813124,
+      "recall": 0.37238589666982574,
+      "support": 58124.0
+    },
+    "weighted avg": {
+      "f1-score": 0.5781007925117007,
+      "precision": 0.5757297239205015,
+      "recall": 0.5932489161103847,
+      "support": 58124.0
+    }
+  }
+}
