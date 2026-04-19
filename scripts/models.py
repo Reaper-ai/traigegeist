@@ -3,16 +3,16 @@ import numpy as np
 import pandas as pd
 
 from sklearn.metrics import cohen_kappa_score
-from sklearn.model_selection import GroupKFold
 from sklearn.utils.class_weight import compute_class_weight
 
 import xgboost as xgb
 import lightgbm as lgb
 from imblearn.ensemble import BalancedRandomForestClassifier
 import mord
-from sklearn.linear_model import SGDClassifier, LogisticRegression, LinearRegression
+from sklearn.linear_model import SGDClassifier, LogisticRegression
 from sklearn.svm import LinearSVC
 from sklearn.calibration import CalibratedClassifierCV
+from sklearn.base import BaseEstimator, ClassifierMixin
 
 
 
@@ -70,7 +70,7 @@ def eval_regressor_with_cutpoints(model, X, y, name, n_classes=2,year_bucket=Non
     print(f"{name} OOF qwk: {oof_qwk:.4f}")
     return oof_class
 
-def eval_balanced_rf(model, X, y, name):
+def eval_balanced_rf(model, X, y, name, n_classes=2, year_bucket=None, splitter=None):
     oof_class = np.zeros(len(y), dtype=int)
     class_values = np.arange(n_classes)
     groups = year_bucket.loc[X.index]
@@ -178,27 +178,44 @@ def linear_svc_clf(seed=42, c=5):
 
 
 # meta leaner models
-def meta_logistic_clf(seed=42):
+def meta_logistic_clf(seed=42, C=0.25, penalty='l2', l1_ratio=None):
+    """The optimized meta-learner found in the notebook."""
     return LogisticRegression(
         solver="saga",
-        max_iter=500,
-        C=0.25,
+        max_iter=800,
+        C=C,
+        penalty=penalty,
+        l1_ratio=l1_ratio,
         class_weight="balanced",
         n_jobs=-1,
         random_state=seed,
     )
 
-def meta_sgd_clf(seed=42):
-    return SGDClassifier(loss="log_loss",
-                        penalty="l2",
-                        alpha=1e-4,
-                        class_weight="balanced",
-                        max_iter=1000,
-                        n_jobs=-1,
-                        random_state=seed,
-                        ) 
+class SimpleWeightedAverager(BaseEstimator, ClassifierMixin):
+    """
+    A simple meta-learner that averages base model probabilities.
+    Weights can be uniform (Simple Average) or customized.
+    """
+    def __init__(self, weights=None, classes=None):
+        self.weights = weights
+        self.classes_ = classes
 
-def stacking_regressor(seed=42):
-    pass
+    def fit(self, X, y):
+        self.classes_ = len(np.unique(y))
+        return self
 
+    def predict_proba(self, X):
+        # Assume X contains stacked probabilities from N models
+        n_models = X.shape[1] // self.classes_
+        # Reshape to (samples, n_models, n_classes)
+        probs = X.reshape(X.shape[0], n_models, self.classes_)
+        
+        if self.weights is None:
+            return np.mean(probs, axis=1)
+        
+        weights = np.array(self.weights).reshape(1, n_models, 1)
+        weighted_probs = np.sum(probs * weights, axis=1) / np.sum(self.weights)
+        return weighted_probs
 
+    def predict(self, X):
+        return np.argmax(self.predict_proba(X), axis=1)
