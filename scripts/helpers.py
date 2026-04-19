@@ -8,7 +8,6 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RESULTS_DIR = PROJECT_ROOT / "results" / "classification_reports"
 
 
-
 def save_classification_report(
     y_true,
     y_pred,
@@ -47,3 +46,19 @@ def save_classification_report(
         f.write("\n\n")
         f.write(report_text)
     return report_dict
+
+
+def save_model_results(y_true, y_pred, name, columns, extra_metrics=None):
+    """Convenience wrapper for the project-specific naming convention."""
+    from scripts.models import qwk_score
+    
+    metrics = extra_metrics or {}
+    metrics["qwk"] = qwk_score(y_true, y_pred)
+    
+    return save_classification_report(
+        y_true=y_true,
+        y_pred=y_pred,
+        model_name=name,
+        columns=columns,
+        extra_metrics=metrics
+    )

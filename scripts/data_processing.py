@@ -3,14 +3,12 @@ import sys
 import pandas as pd
 import numpy as np
 
-PROJECT_ROOT = Path("..").resolve()
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()
 
 RANDOM_STATE = 42
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
-
-df = pd.read_csv(PROJECT_ROOT / "working_data" / "nhamcs_data_2018_22.csv")
 
 def apply_cyclical_encoding(df):
 
@@ -124,4 +122,24 @@ def exclude_bias_features(df):
     bias_columns = {"residence", "region", "race", "no_payment", "insurance"}
     df.drop(columns=[c for c in df.columns if c in bias_columns], inplace=True)
 
+def convert_categorical_to_numeric(df):
+    print("Converting categorical features to numeric...")
 
+    categorical_cols = df.select_dtypes(include=['object', 'category']).columns
+    for col in categorical_cols:
+        if df[col].nunique() <= 10:  # One-hot encode low-cardinality features
+            dummies = pd.get_dummies(df[col], prefix=col)
+            df = pd.concat([df, dummies], axis=1)
+            df.drop(columns=[col], inplace=True)
+        else:  # Label encode high-cardinality features
+            df[col] = pd.factorize(df[col])[0]
+
+    print(f"Dataframe shape after converting categoricals: {df.shape}")
+    return df
+
+
+# Define Target (Grouped ESI)
+def map_esi(val):
+    if val in (1, 2): return 0
+    if val == 3: return 1
+    return 2 if val in (4, 5) else np.nan
