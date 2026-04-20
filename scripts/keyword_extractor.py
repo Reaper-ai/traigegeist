@@ -98,14 +98,15 @@ def get_emergency_flags(df: pd.DataFrame, text_columns: List[str] = None) -> pd.
     processor = EmergencyTextProcessor(TARGET_KEYWORDS)
     return processor.process_dataframe(df, text_columns)
 
-# --- Example Usage ---
-if __name__ == "__main__":
-    # # Example mock data
-    # data = {
-    #     "chief_complaint_text": ["Chest pain", "No SOB", "Fever"],
-    #     "injury_cause_text": ["nan", "Assaulted by peer", "None"]
-    # }
-    # test_df = pd.DataFrame(data)
+# # --- Example Usage ---
+# if __name__ == "__main__":
+#     # # Example mock data
+#     # data = {
+#     #     "chief_complaint_text": ["Chest pain", "No SOB", "Fever"],
+#     #     "injury_cause_text": ["nan", "Assaulted by peer", "None"]
+#     # }
+#     # test_df = pd.DataFrame(data)
     
-    # flags = get_emergency_flags(test_df)
-    # print(flags)
+#     # flags = get_emergency_flags(test_df)
+#     # print(flags)
+#     pass

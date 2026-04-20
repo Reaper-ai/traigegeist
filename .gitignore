@@ -19,3 +19,4 @@ results/model_artifacts/
 
 # Generated explainability outputs
 results/lime/
+results/models/

@@ -67,10 +67,17 @@ def run_pipeline():
     meta_X = np.hstack([base_model_probs["xgb"], base_model_probs["lgb"], X_nlp.to_numpy()])
     
     # Variant A: Logistic Regression (The "Winner")
-    print("\nEvaluating Logistic Meta-Learner...")
+    print("\nFitting Final Logistic Meta-Learner...")
     meta_lr = mod.meta_logistic_clf(RANDOM_STATE)
+    sw_meta = mod.compute_sample_weights(y)
+    meta_lr.fit(meta_X, y, sample_weight=sw_meta)
     
-    
+    import joblib
+    models_dir = PROJECT_ROOT / "results" / "models"
+    models_dir.mkdir(parents=True, exist_ok=True)
+    joblib.dump(meta_lr, models_dir / "meta_learner_final.joblib")
+    print(f"Saved final meta-learner to {models_dir / 'meta_learner_final.joblib'}")
+
     # Variant B: Simple Average
     print("Evaluating Simple Average Variant...")
     avg_model = mod.SimpleWeightedAverager()
