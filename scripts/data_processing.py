@@ -122,17 +122,12 @@ def exclude_bias_features(df):
     bias_columns = {"residence", "region", "race", "no_payment", "insurance"}
     df.drop(columns=[c for c in df.columns if c in bias_columns], inplace=True)
 
-def convert_categorical_to_numeric(df):
-    print("Converting categorical features to numeric...")
+def convert_categorical(df):
+    print("Converting object / string features to categorical...")
 
-    categorical_cols = df.select_dtypes(include=['object', 'category']).columns
+    categorical_cols = df.select_dtypes(include=['object', 'str']).columns
     for col in categorical_cols:
-        if df[col].nunique() <= 10:  # One-hot encode low-cardinality features
-            dummies = pd.get_dummies(df[col], prefix=col)
-            df = pd.concat([df, dummies], axis=1)
-            df.drop(columns=[col], inplace=True)
-        else:  # Label encode high-cardinality features
-            df[col] = pd.factorize(df[col])[0]
+        df[col] = df[col].astype('category')
 
     print(f"Dataframe shape after converting categoricals: {df.shape}")
     return df
