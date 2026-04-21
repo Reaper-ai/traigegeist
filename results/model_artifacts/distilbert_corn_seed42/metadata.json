@@ -1,0 +1,15 @@
+{
+  "created_at_utc": "2026-04-20T13:07:04+00:00",
+  "model_name": "nlpie/distil-clinicalbert",
+  "num_classes": 3,
+  "max_len": 100,
+  "dropout": 0.5,
+  "seed": 42,
+  "weights_path": "/home/gaurav/python/kaggle/triage/results/model_artifacts/distilbert_corn_seed42/model_state.pt",
+  "tokenizer_dir": "/home/gaurav/python/kaggle/triage/results/model_artifacts/distilbert_corn_seed42/tokenizer",
+  "class_labels": [
+    0,
+    1,
+    2
+  ]
+}
