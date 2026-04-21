@@ -72,7 +72,8 @@ class TriageInference:
 
     def load_models(self):
         # Load NLP
-        self.tokenizer = AutoTokenizer.from_pretrained(self.nlp_artifact_dir / "tokenizer")
+        self.tokenizer = AutoTokenizer.from_pretrained(self.nlp_artifact_dir / "tokenizer", local_files_only=True)
+        # After
         self.nlp_model = TriageModel("nlpie/distil-clinicalbert", num_classes=3)
         self.nlp_model.load_state_dict(torch.load(self.nlp_artifact_dir / "model_state.pt", map_location="cpu"))
         self.nlp_model.eval()
@@ -238,7 +239,7 @@ class TriageInference:
                     X[col] = pd.Categorical(X[col], categories=levels)
                 except Exception as e:
                     print(f"Warning: Failed to convert {col} to categorical: {e}")
-                    X[col] = pd.Categorical(X[col], categories=levels, remove_unused_categories=False) if X[col].dtype == 'object' else X[col]
+                    X[col] = pd.Categorical(X[col], categories=levels,) if X[col].dtype == 'object' else X[col]
         
         # BRF needs numeric codes
         X_codes = X.copy()
