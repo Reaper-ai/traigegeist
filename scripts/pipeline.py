@@ -23,7 +23,7 @@ def run_pipeline():
     
     df = dp.apply_cyclical_encoding(df)
     df = dp.apply_clinical_ratios(df)
-    df = dp.convert_categorical_to_numeric(df)
+    df = dp.convert_categorical(df)
     dp.drop_leaky_features(df)
     dp.exclude_bias_features(df)
 
@@ -43,7 +43,7 @@ def run_pipeline():
     splitter = GroupKFold(n_splits=3)
     
     n_classes = 3
-    base_model_probs = {name: np.zeros((len(y), n_classes)) for name in ["xgb", "lgb", "brf"]}
+    base_model_probs = {name: np.zeros((len(y), n_classes)) for name in ["xgb", "lgb"]}
     
     # 3. GENERATE OOF PROBABILITIES
     print("Generating Base Model OOF Predictions...")
