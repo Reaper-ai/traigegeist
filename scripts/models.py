@@ -7,7 +7,7 @@ from sklearn.utils.class_weight import compute_class_weight
 
 import xgboost as xgb
 import lightgbm as lgb
-from imblearn.ensemble import BalancedRandomForestClassifier
+import lightgbm as lgb
 import mord
 from sklearn.linear_model import SGDClassifier, LogisticRegression
 from sklearn.svm import LinearSVC
@@ -70,31 +70,6 @@ def eval_regressor_with_cutpoints(model, X, y, name, n_classes=2,year_bucket=Non
     print(f"{name} OOF qwk: {oof_qwk:.4f}")
     return oof_class
 
-def eval_balanced_rf(model, X, y, name, n_classes=2, year_bucket=None, splitter=None):
-    oof_class = np.zeros(len(y), dtype=int)
-    class_values = np.arange(n_classes)
-    groups = year_bucket.loc[X.index]
-    for fold, (train_idx, val_idx) in enumerate(splitter.split(X, y, groups=groups), start=1):
-        X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]
-        y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]
-        sample_weight = compute_sample_weights(y_train)
-        model.fit(X_train, y_train, sample_weight=sample_weight)
-        train_proba = model.predict_proba(X_train)
-        val_proba = model.predict_proba(X_val)
-        train_pred = train_proba @ class_values
-        val_pred = val_proba @ class_values
-        cutpoints = fit_cutpoints(y_train, train_pred, n_classes)
-        val_class = apply_cutpoints(val_pred, cutpoints)
-        oof_class[val_idx] = val_class
-        fold_qwk = qwk_score(y_val, val_class)
-        print(f"{name} fold {fold} qwk: {fold_qwk:.4f}")
-    oof_qwk = qwk_score(y, oof_class)
-    print(f"{name} OOF qwk: {oof_qwk:.4f}")
-    return oof_class
-
-
-# ---------------- Model definitions ----------------
-
 # ordinal regression models with cutpoint optimization
 def xgb_reg(seed=42):
     return xgb.XGBRegressor( n_estimators=600,
@@ -148,15 +123,6 @@ def lgb_clf(seed=42, is_unbalanced=False):
         random_state=seed,
         n_jobs=-1,
     )
-
-def balanced_rf_clf(seed=42):
-    return BalancedRandomForestClassifier(
-        n_estimators=500,
-        max_depth=None,
-        random_state=seed,
-        n_jobs=-1,
-    )
-
 
 # keyword tagging models 
 def mord_ordinal_clf(seed=42):

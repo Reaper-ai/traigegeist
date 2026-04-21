@@ -65,20 +65,20 @@ def apply_cyclical_encoding(df):
     
 def news2_score(df):
     """Calculates an approximate NEWS2 score based on available vital sign features in the dataframe."""
-    # NEWS2-style score (approximate)
+    # NEWS2-style score (approximate) - Matching modelling notebook ground truth (RR, SpO2, SBP)
     news2 = pd.Series(0, index=df.index, dtype=float)
 
-    sbp = df["sys_bp"]
-    hr = df["heart_rate"]
-    t = df["temp"]
-    sp = df["spo2"]
-    rr = df["resp_rate"]
-
-    news2 += np.select([t <= 95.0,(t > 95.0) & (t <= 96.8),(t > 96.8) & (t <= 100.4),(t > 100.4) & (t <= 102.2),t > 102.2,], [3, 1, 0, 1, 2], default=0)
-    news2 += np.select([rr <= 8,(rr >= 9) & (rr <= 11), (rr >= 12) & (rr <= 20),(rr >= 21) & (rr <= 24),rr >= 25,], [3, 1, 0, 2, 3], default=0)
-    news2 += np.select([sp <= 91,(sp >= 92) & (sp <= 93),(sp >= 94) & (sp <= 95),sp >= 96,], [3, 2, 1, 0], default=0)
-    news2 += np.select([sbp <= 90,(sbp >= 91) & (sbp <= 100),(sbp >= 101) & (sbp <= 110),(sbp >= 111) & (sbp <= 219), sbp >= 220,], [3, 2, 1, 0, 3], default=0)
-    news2 += np.select([hr <= 40, (hr >= 41) & (hr <= 50), (hr >= 51) & (hr <= 90),(hr >= 91) & (hr <= 110),(hr >= 111) & (hr <= 130),hr >= 131,], [3, 1, 0, 1, 2, 3], default=0)
+    if "resp_rate" in df.columns:
+        rr = df["resp_rate"]
+        news2 += np.select([rr <= 8, (rr >= 9) & (rr <= 11), (rr >= 12) & (rr <= 20), (rr >= 21) & (rr <= 24), rr >= 25], [3, 1, 0, 2, 3], default=0)
+    
+    if "spo2" in df.columns:
+        sp = df["spo2"]
+        news2 += np.select([sp <= 91, (sp >= 92) & (sp <= 93), (sp >= 94) & (sp <= 95), sp >= 96], [3, 2, 1, 0], default=0)
+    
+    if "sys_bp" in df.columns:
+        sbp = df["sys_bp"]
+        news2 += np.select([sbp <= 90, (sbp >= 91) & (sbp <= 100), (sbp >= 101) & (sbp <= 110), (sbp >= 111) & (sbp <= 219), sbp >= 220], [3, 2, 1, 0, 3], default=0)
 
     return news2
 
@@ -87,23 +87,22 @@ def apply_clinical_ratios(df):
 
     print("Adding clinical ratios and vital missingness...")
 
-    df["shock_index"] = df["heart_rate"] / df["sys_bp"].replace(0, np.nan)
-    df["shock_index"] = df["shock_index"] * np.where(df["age"] >= 65, 1.2, 1.0)
+    df["shock_index"]         = df["heart_rate"] / df["sys_bp"].replace(0, np.nan)
+    df["shock_index_age_adj"] = df["shock_index"] * np.where(df["age"] >= 65, 1.2, 1.0)
 
-    df["map"] = (df["sys_bp"] + 2 * df["dias_bp"]) / 3
-    df["pulse_pressure"] = df["sys_bp"] - df["dias_bp"]
+    df["map"]                 = (df["sys_bp"] + 2 * df["dias_bp"]) / 3
+    df["pulse_pressure"]      = df["sys_bp"] - df["dias_bp"]
 
-    df["age_hr_interaction"] = df["age"] * df["heart_rate"]
+    df["age_hr_interaction"]  = df["age"] * df["heart_rate"]
 
-    df["resp_spo2_ratio"] = df["resp_rate"] / df["spo2"].replace(0, np.nan)
+    df["resp_spo2_ratio"]     = df["resp_rate"] / df["spo2"].replace(0, np.nan)
 
-    df["elderly_tachy"] = ((df["age"] >= 65) & (df["heart_rate"] > 100)).astype(int)
+    df["elderly_tachy"]       = ((df["age"] >= 65) & (df["heart_rate"] > 100)).astype(int)
 
-    history_cols = [c for c in df.columns if any(k in c for k in "hist_")]
+    history_cols = [c for c in df.columns if c.startswith("hist_")]
     if history_cols:
         hist_numeric = df[history_cols].apply(pd.to_numeric, errors="coerce")
         df["history_count"] = hist_numeric.fillna(0).sum(axis=1)
-
 
     df["news2_score"] = news2_score(df)
 
