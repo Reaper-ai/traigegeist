@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "config": "lgbm_balanced",
+    "model": "lgbm_balanced_oof",
+    "n_features": 75,
+    "notes": "LightGBM OOF",
+    "qwk": 1.0,
+    "seed": 42,
+    "timestamp": "20260415_232747"
+  },
+  "report": {
+    "0": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 846.0
+    },
+    "1": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 8597.0
+    },
+    "2": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 29568.0
+    },
+    "3": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 16715.0
+    },
+    "4": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 2398.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 58124.0
+    },
+    "weighted avg": {
+      "f1-score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 58124.0
+    }
+  }
+}

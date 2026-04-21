@@ -9,3 +9,14 @@ wheels/
 # Virtual environments
 .venv
 .github
+
+# Large model artifacts
+results/model_artifacts/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Generated explainability outputs
+results/lime/
+results/models/

@@ -1,0 +1,25 @@
+{
+  "config": "stacked_ordinal_logreg_override_calibrated",
+  "model": "stacked_ordinal_logreg_oof_clinical_override_v2",
+  "n_features": 10,
+  "notes": "Stacked logreg + CALIBRATED clinical safety overrides (OOF). Conservative thresholds: Focus on truly critical patients. ~3.5% override rate.",
+  "override_rate_pct": 3.49,
+  "qwk": 0.49816618292674375,
+  "qwk_change_pct": -8.4,
+  "qwk_original": 0.5439063904970063,
+  "seed": 42,
+  "timestamp": "20260417_161009",
+  "upgrades_applied": 2030
+}
+
+              precision    recall  f1-score   support
+
+           0       0.11      0.36      0.17       846
+           1       0.33      0.51      0.40      8597
+           2       0.70      0.50      0.58     29568
+           3       0.53      0.50      0.51     16715
+           4       0.18      0.43      0.26      2398
+
+    accuracy                           0.49     58124
+   macro avg       0.37      0.46      0.39     58124
+weighted avg       0.57      0.49      0.52     58124

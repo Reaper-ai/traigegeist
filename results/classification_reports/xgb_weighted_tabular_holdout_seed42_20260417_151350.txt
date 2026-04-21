@@ -1,0 +1,21 @@
+{
+  "config": "xgb_weighted",
+  "model": "xgb_weighted_tabular_holdout",
+  "n_features": 87,
+  "notes": "weighted XGB tabular holdout",
+  "qwk": 0.49239941673825294,
+  "seed": 42,
+  "timestamp": "20260417_151350"
+}
+
+              precision    recall  f1-score   support
+
+           0       0.18      0.25      0.21       169
+           1       0.39      0.58      0.47      1719
+           2       0.71      0.49      0.58      5914
+           3       0.54      0.62      0.58      3343
+           4       0.22      0.41      0.29       480
+
+    accuracy                           0.53     11625
+   macro avg       0.41      0.47      0.42     11625
+weighted avg       0.59      0.53      0.54     11625

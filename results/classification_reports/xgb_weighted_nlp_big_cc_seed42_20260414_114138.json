@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "config": "xgb_big",
+    "model": "xgb_weighted_nlp_big_cc",
+    "n_features": 92,
+    "notes": "weighted XGB with NLP embeddings",
+    "seed": 42,
+    "timestamp": "20260414_114138"
+  },
+  "report": {
+    "0": {
+      "f1-score": 0.10719754977029096,
+      "precision": 0.06205673758865248,
+      "recall": 0.39325842696629215,
+      "support": 178.0
+    },
+    "1": {
+      "f1-score": 0.44453746337379657,
+      "precision": 0.345703125,
+      "recall": 0.6225087924970691,
+      "support": 1706.0
+    },
+    "2": {
+      "f1-score": 0.5024111248177638,
+      "precision": 0.7412309728656519,
+      "recall": 0.3799830364715861,
+      "support": 5895.0
+    },
+    "3": {
+      "f1-score": 0.29463283179878735,
+      "precision": 0.5990867579908675,
+      "recall": 0.1953543776057177,
+      "support": 3358.0
+    },
+    "4": {
+      "f1-score": 0.17175974710221287,
+      "precision": 0.09854897218863362,
+      "recall": 0.6680327868852459,
+      "support": 488.0
+    },
+    "accuracy": 0.37453763440860216,
+    "macro avg": {
+      "f1-score": 0.3041077433725704,
+      "precision": 0.36932531312676115,
+      "recall": 0.4518274840851822,
+      "support": 11625.0
+    },
+    "weighted avg": {
+      "f1-score": 0.4139674376724073,
+      "precision": 0.6047481675135642,
+      "recall": 0.37453763440860216,
+      "support": 11625.0
+    }
+  }
+}

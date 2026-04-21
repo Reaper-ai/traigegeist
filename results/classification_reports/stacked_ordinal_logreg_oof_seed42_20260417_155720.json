@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "config": "stacked_ordinal_logreg",
+    "model": "stacked_ordinal_logreg_oof",
+    "n_features": 10,
+    "notes": "Multinomial logreg stacker over XGB/LGBM ordinal OOF probabilities",
+    "qwk": 0.5439063904970063,
+    "seed": 42,
+    "timestamp": "20260417_155720"
+  },
+  "report": {
+    "0": {
+      "f1-score": 0.2074990899162723,
+      "precision": 0.1499210941609679,
+      "recall": 0.33687943262411346,
+      "support": 846.0
+    },
+    "1": {
+      "f1-score": 0.4255584914724958,
+      "precision": 0.3624979538385988,
+      "recall": 0.5151797138536699,
+      "support": 8597.0
+    },
+    "2": {
+      "f1-score": 0.5865774176501674,
+      "precision": 0.6961672473867596,
+      "recall": 0.5067978896103896,
+      "support": 29568.0
+    },
+    "3": {
+      "f1-score": 0.5232153569286143,
+      "precision": 0.5246315789473684,
+      "recall": 0.521806760394855,
+      "support": 16715.0
+    },
+    "4": {
+      "f1-score": 0.2699624379013692,
+      "precision": 0.19026473099914604,
+      "recall": 0.4645537948290242,
+      "support": 2398.0
+    },
+    "accuracy": 0.5081377744133232,
+    "macro avg": {
+      "f1-score": 0.4025625587737839,
+      "precision": 0.3846965210665682,
+      "recall": 0.4690435182624104,
+      "support": 58124.0
+    },
+    "weighted avg": {
+      "f1-score": 0.5259601246212862,
+      "precision": 0.5686630822480134,
+      "recall": 0.5081377744133232,
+      "support": 58124.0
+    }
+  }
+}
