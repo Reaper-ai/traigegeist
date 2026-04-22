@@ -1,4 +1,6 @@
-<img width="400" height="225" alt="traigest" src="https://github.com/user-attachments/assets/7df5b07d-0633-405f-99ff-6460a0af6c4f" />
+<img width="1920" height="1080" alt="traigest final" src="https://github.com/user-attachments/assets/012ebbdd-d0cb-44c2-8b10-7a70ba796cbe" />
+
+
 # 🚑 Real-World Emergency Triage Risk Stratification with a Multimodal Ordinal Ensemble
 ### Live Demo: https://traigegeist.streamlit.app/
 
