@@ -1,4 +1,6 @@
+<img width="400" height="225" alt="traigest" src="https://github.com/user-attachments/assets/7df5b07d-0633-405f-99ff-6460a0af6c4f" />
 # 🚑 Real-World Emergency Triage Risk Stratification with a Multimodal Ordinal Ensemble
+### Live Demo: https://traigegeist.streamlit.app/
 
 3-class emergency triage decision aid built on NHAMCS 2018-2022 real-world ED visits.
 
